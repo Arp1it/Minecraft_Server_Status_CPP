@@ -8,9 +8,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(cpr CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
 
-add_library(minecraft_api
-src/java.cpp
-src/bedrock.cpp
+add_library(minecraft_api STATIC
+    src/java.cpp
+    src/bedrock.cpp
 )
 
 add_library(minecraft_api::minecraft_api ALIAS minecraft_api)
