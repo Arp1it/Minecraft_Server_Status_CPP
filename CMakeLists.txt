@@ -9,40 +9,51 @@ find_package(cpr CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
 
 add_library(minecraft_api
-    src/java.cpp
-    src/bedrock.cpp
+src/java.cpp
+src/bedrock.cpp
 )
 
 add_library(minecraft_api::minecraft_api ALIAS minecraft_api)
 
 target_include_directories(minecraft_api
-    PUBLIC
-        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
-        $<INSTALL_INTERFACE:include>
+PUBLIC
+$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+$<INSTALL_INTERFACE:include>
 )
 
 target_link_libraries(minecraft_api
-    PUBLIC
-        cpr::cpr
-        nlohmann_json::nlohmann_json
+PUBLIC
+cpr::cpr
+nlohmann_json::nlohmann_json
+)
+
+include(CMakePackageConfigHelpers)
+
+write_basic_package_version_file(
+"${CMAKE_CURRENT_BINARY_DIR}/minecraft_apiConfigVersion.cmake"
+VERSION ${PROJECT_VERSION}
+COMPATIBILITY SameMajorVersion
 )
 
 install(TARGETS minecraft_api
-        EXPORT minecraft_api_Targets
-        ARCHIVE DESTINATION lib
-        LIBRARY DESTINATION lib
-        RUNTIME DESTINATION bin
+EXPORT minecraft_api_Targets
+ARCHIVE DESTINATION lib
+LIBRARY DESTINATION lib
+RUNTIME DESTINATION bin
 )
 
 install(DIRECTORY include/
-        DESTINATION include
+DESTINATION include
 )
 
 install(EXPORT minecraft_api_Targets
-        FILE minecraft_api_Targets.cmake
-        NAMESPACE minecraft_api::
-        DESTINATION lib/cmake/minecraft_api
+FILE minecraft_api_Targets.cmake
+NAMESPACE minecraft_api::
+DESTINATION lib/cmake/minecraft_api
 )
 
-install(FILES cmake/minecraft_apiConfig.cmake
-        DESTINATION lib/cmake/minecraft_api)
+install(FILES
+cmake/minecraft_apiConfig.cmake
+"${CMAKE_CURRENT_BINARY_DIR}/minecraft_apiConfigVersion.cmake"
+DESTINATION lib/cmake/minecraft_api
+)
