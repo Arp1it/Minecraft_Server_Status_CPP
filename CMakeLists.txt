@@ -40,7 +40,13 @@ include(GNUInstallDirs)
 install(TARGETS minecraft_api
         EXPORT minecraft_api_Targets
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+                CONFIGURATIONS Release RelWithDebInfo MinSizeRel
+        ARCHIVE DESTINATION debug/${CMAKE_INSTALL_LIBDIR}
+                CONFIGURATIONS Debug
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+                CONFIGURATIONS Release RelWithDebInfo MinSizeRel
+        LIBRARY DESTINATION debug/${CMAKE_INSTALL_LIBDIR}
+                CONFIGURATIONS Debug
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
 
