@@ -16,7 +16,7 @@ namespace minecraft_server_status {
 
         auto json = nlohmann::json::parse(response.text);
 
-        Server_Status status;
+        Server_Status status{};
 
         status.online = json["online"];
 

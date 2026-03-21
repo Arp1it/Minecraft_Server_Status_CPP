@@ -1,0 +1,5 @@
+cmake -B build -DCMAKE_TOOLCHAIN_FILE=.../vcpkg.cmake
+cmake --build build --config Release
+cmake --install build --config Release --prefix install
+cmake --build build --config Debug
+cmake --install build --config Debug --prefix install
