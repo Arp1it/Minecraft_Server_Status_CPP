@@ -28,14 +28,13 @@ target_link_libraries(minecraft_server_status
 )
 
 include(CMakePackageConfigHelpers)
+include(GNUInstallDirs)
 
 write_basic_package_version_file(
-"${CMAKE_CURRENT_BINARY_DIR}/minecraft_server_statusConfigVersion.cmake"
-VERSION ${PROJECT_VERSION}
-COMPATIBILITY SameMajorVersion
+    "${CMAKE_CURRENT_BINARY_DIR}/minecraft_server_statusConfigVersion.cmake"
+    VERSION ${PROJECT_VERSION}
+    COMPATIBILITY SameMajorVersion
 )
-
-include(GNUInstallDirs)
 
 install(TARGETS minecraft_server_status
     EXPORT minecraft_server_statusTargets
@@ -45,17 +44,17 @@ install(TARGETS minecraft_server_status
 )
 
 install(DIRECTORY include/
-DESTINATION include
+    DESTINATION include
 )
 
 install(EXPORT minecraft_server_statusTargets
-        FILE minecraft_server_statusTargets.cmake
-        NAMESPACE minecraft_server_status::
-        DESTINATION lib/cmake/minecraft_server_status
+    FILE minecraft_server_statusTargets.cmake
+    NAMESPACE minecraft-server-status::
+    DESTINATION share/minecraft-server-status
 )
 
 install(FILES
-cmake/minecraft_server_statusConfig.cmake
-"${CMAKE_CURRENT_BINARY_DIR}/minecraft_server_statusConfigVersion.cmake"
-DESTINATION lib/cmake/minecraft-server-status
+    cmake/minecraft_server_statusConfig.cmake
+    "${CMAKE_CURRENT_BINARY_DIR}/minecraft_server_statusConfigVersion.cmake"
+    DESTINATION share/minecraft-server-status
 )
