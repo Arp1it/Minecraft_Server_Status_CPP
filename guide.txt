@@ -1,4 +1,4 @@
-cmake -B build -DCMAKE_TOOLCHAIN_FILE=.../vcpkg.cmake
+cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=C:\Users\hp\Documents\proggs\cpp_prac\pubpkg\vcpkg\scripts\buildsystems\vcpkg.cmake
 cmake --build build --config Release
 cmake --install build --config Release --prefix install
 cmake --build build --config Debug

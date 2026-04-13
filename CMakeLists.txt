@@ -13,7 +13,7 @@ add_library(minecraft_server_status
     src/bedrock.cpp
 )
 
-add_library(minecraft_server_status::minecraft_server_status ALIAS minecraft_server_status)
+add_library(minecraft-server-status::minecraft_server_status ALIAS minecraft_server_status)
 
 target_include_directories(minecraft_server_status
     PUBLIC
@@ -57,5 +57,5 @@ install(EXPORT minecraft_server_statusTargets
 install(FILES
 cmake/minecraft_server_statusConfig.cmake
 "${CMAKE_CURRENT_BINARY_DIR}/minecraft_server_statusConfigVersion.cmake"
-DESTINATION lib/cmake/minecraft_server_status
+DESTINATION lib/cmake/minecraft-server-status
 )
