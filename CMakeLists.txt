@@ -13,6 +13,11 @@ add_library(minecraft_server_status
     src/bedrock.cpp
 )
 
+# Other configurations for your target
+
+install(TARGETS minecraft_server_status EXPORT minecraft_server_status-config)
+install(EXPORT minecraft_server_status-config NAMESPACE minecraft_server_status:: DESTINATION share/minecraft_server_status)
+
 add_library(minecraft-server-status::minecraft_server_status ALIAS minecraft_server_status)
 
 target_include_directories(minecraft_server_status
