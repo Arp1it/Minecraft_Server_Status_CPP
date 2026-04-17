@@ -59,7 +59,7 @@ install(EXPORT minecraft-server-statusTargets
 
 # ✅ CONFIG FILES
 install(FILES
-    cmake/minecraft_server_statusConfig.cmake
+    cmake/minecraft-server-statusConfig.cmake
     "${CMAKE_CURRENT_BINARY_DIR}/minecraft-server-statusConfigVersion.cmake"
     DESTINATION share/minecraft-server-status
 )
